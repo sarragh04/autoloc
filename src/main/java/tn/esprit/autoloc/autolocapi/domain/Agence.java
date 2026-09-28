@@ -1,5 +1,5 @@
 package tn.esprit.autoloc.autolocapi.domain;
-
+import java.util.List;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,4 +21,17 @@ public class Agence {
     private String ville;
     private String adresse;
     private String telephone;
+
+    @OneToMany(
+            mappedBy = "agence",
+            fetch = FetchType.LAZY
+    )
+    private List<Vehicule> vehicules;
+
+    @OneToMany(
+            mappedBy = "agence",
+            fetch = FetchType.LAZY
+    )
+    private List<Employe> employes;
+
 }
